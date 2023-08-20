@@ -1,7 +1,6 @@
-package com.learnreactiveprogramming.service;
+package com.reactivespring;
 
 import org.junit.jupiter.api.Test;
-import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
 class FluxAndMonoGeneratorServiceTest {
