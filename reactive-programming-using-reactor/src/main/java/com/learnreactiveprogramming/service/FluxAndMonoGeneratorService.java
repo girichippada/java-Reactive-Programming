@@ -43,6 +43,24 @@ public class FluxAndMonoGeneratorService {
                 .log();
     }
 
+    Flux<String> namesFlux_flatmapDefault(int nameLength) {
+        return Flux.fromIterable(List.of("Giri", "Sai", "Suma"))
+                .map(String::toUpperCase)
+                .filter(name -> name.length() >= nameLength)
+                .flatMap(this::stringToStringCharFlux)
+                .defaultIfEmpty("Default")
+                .log();
+    }
+
+    Flux<String> namesFlux_flatmapSwitch(int nameLength) {
+        return Flux.fromIterable(List.of("Giri", "Sai", "Suma"))
+                .map(String::toUpperCase)
+                .filter(name -> name.length() >= nameLength)
+                .switchIfEmpty(Flux.just("default").transform(name -> name.map(String::toUpperCase)))
+                .flatMap(this::stringToStringCharFlux)
+                .log();
+    }
+
     Duration getRandomDuration() {
         int duration = 1000;
         var random = new Random().nextInt(duration);

@@ -108,4 +108,22 @@ class FluxAndMonoGeneratorServiceTest {
                 .expectNext("SAI")
                 .verifyComplete();
     }
+
+    @Test
+    void namesFlux_flatmapDefault() {
+        var namesFlux_map = service.namesFlux_flatmapDefault(7);
+
+        StepVerifier.create(namesFlux_map)
+                .expectNext("Default")
+                .verifyComplete();
+    }
+
+    @Test
+    void namesFlux_flatmapSwitch() {
+        var namesFlux_map = service.namesFlux_flatmapSwitch(6);
+
+        StepVerifier.create(namesFlux_map)
+                .expectNext("D", "E", "F", "A", "U", "L", "T")
+                .verifyComplete();
+    }
 }
