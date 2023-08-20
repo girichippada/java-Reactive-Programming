@@ -4,10 +4,28 @@
 name: Java CI with Gradle
 
 on:
+  #Manually trigger workflow runs
+  workflow_dispatch:
+    inputs:
+      publish_image:
+        description: Publish Build Artifact
+        type: boolean
+        required: false
   push:
-    branches: [ final ]
+    branches: [ master ]
+  #Trigger the workflow when pull request opened from the feature branch
   pull_request:
-    branches: [ final ]
+    types:
+      - opened
+      - synchronize
+    branches:
+      - 'feature/**'
+      - 'master'
+    paths:
+      - '**'
+      - '!.github/**'      # do not run on any change in this folder except this pipeline itself
+      - '.github/workflows/build.yaml'
+      - '!**.md'           # do not run on doc change
 
 jobs:
   build:
