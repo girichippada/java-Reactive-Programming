@@ -112,6 +112,13 @@ If no error happened, the transformation will be applied to the item successfull
 2. Flux: Use when more than one object needs to be returned
 3. Mono: Use when one or none objects need to be returned
 4. Supports streaming so can apply intermediate operations: map, filter, flatMap, etc.
-5. log method is available for all Publisher classes(Flux, Mono) for logging the events occurring in processing the non blocking requests
+5. log method is available for all Publisher classes(Flux, Mono) for logging the events occurring in processing the non-blocking requests
+6. use flatMap for the Publisher classes for transforming the data asynchronously and return a publisher object(Flux or Mono)
+7. Can handle empty publisher data using defaultIfEMpty method to return a default response
+8. Can handle empty publisher data using switchIfEmpty method to return a different publisher object when empty data is received
+9. Can concat two reactive streams into one which is useful when need to combine resultset from two external services or DBs using concat and concatWith methods
+10. Can merge two reactive streams into one using merge and mergeWith methods
+11. Can sequentially merge two publishers' result(Flux) using mergeSequential method
+12. Can use zip and zipWith methods where zip method allows to merge 2 to 8 publishers(Flux or Mono), waits for all publishers sends an onEvent event, and continues till any one publisher sends an onComplete event. Whereas zipWIth is an instance method and allows zip up to two publishers(Flux or Mono) and the remaining behavior is the same as zip() method
 
 **References**: https://medium.com/sysco-labs/reactive-programming-in-java-8d1f5c648012
