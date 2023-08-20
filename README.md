@@ -110,9 +110,8 @@ If no error happened, the transformation will be applied to the item successfull
 ## Features
 1. Project Reactor (https://github.com/reactor/reactor) is the implementation of Reactive programming in Java. Jdk 9 provided interfaces with no implementation
 2. Flux: Use when more than one object needs to be returned
-3. 
+3. Mono: Use when one or none objects need to be returned
+4. Supports streaming so can apply intermediate operations: map, filter, flatMap, etc.
+5. log method is available for all Publisher classes(Flux, Mono) for logging the events occurring in processing the non blocking requests
 
-References: https://medium.com/sysco-labs/reactive-programming-in-java-8d1f5c648012
-4. Mono: Use when one or none objects need to be returned
-5. Supports streaming so can apply intermediate operations: map, filter, flatMap, etc.
-6. log method is available for all Publisher classes(Flux, Mono) for logging the events occurring in processing the non blocking requests
+**References**: https://medium.com/sysco-labs/reactive-programming-in-java-8d1f5c648012
